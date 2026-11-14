@@ -22,4 +22,5 @@ describe('Carrito de compras', () => {
 
         describe('Iteración 3: producto repetido', () => { test('agregar el mismo producto acumula la cantidad en una sola línea', () => { carrito.agregar('Mouse', 50000, 1); carrito.agregar('Mouse', 50000, 2); assert.equal(carrito.productos.length, 1); assert.equal(carrito.cantidadDeItems(), 3); assert.equal(carrito.subtotal(), 150000); }); });
 
+        describe('Iteración 4: validaciones', () => { test('no permite precios negativos o en cero', () => { assert.throws(() => carrito.agregar('Mouse', -100, 1), /precio/); assert.throws(() => carrito.agregar('Mouse', 0, 1), /precio/); }); test('no permite cantidades en cero, negativas o decimales', () => { assert.throws(() => carrito.agregar('Mouse', 50000, 0), /cantidad/); assert.throws(() => carrito.agregar('Mouse', 50000, -1), /cantidad/); assert.throws(() => carrito.agregar('Mouse', 50000, 1.5), /cantidad/); }); });
 });
